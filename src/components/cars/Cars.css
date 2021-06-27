@@ -1,0 +1,48 @@
+::-webkit-scrollbar {
+    width: 10px;
+}
+.Cars {
+    display: flex;
+    padding: 1em;
+}
+
+.Cars .carousel-dots {
+    position: fixed;
+    top: 80%;
+    left: 50%;
+    display: flex;
+    transform: translate(-50%, 0);
+    justify-content: center;
+}
+/* .Cars .carousel-dots {
+    position: fixed;
+    top: 20%;
+    left: 20%;
+    display: flex;
+    transform: translate(-50%, 0);
+    justify-content: center;
+} */
+/* @media (min-width: 420px) and (min-height: 420px) {
+    .Cars .carousel-dots {
+        position: fixed;
+        top: 80%;
+        left: 50%;
+        display: flex;
+        transform: translate(-50%, 0);
+        justify-content: center;
+    }
+} */
+.Cars .carousel-dots li {
+    color: darkgray;
+    /* padding: 1em; */
+}
+.Cars .carousel-dots li.activeIndex {
+    color: black;
+}
+.Cars .carousel-dots li a {
+    position: relative;
+    left: -2em;
+    display: inline-block;
+    padding: 1em;
+    text-decoration: none;
+}

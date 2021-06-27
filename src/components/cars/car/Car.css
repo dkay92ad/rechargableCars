@@ -1,0 +1,47 @@
+.Car {
+    padding: 2em 0;
+    /* width: 400px; */
+    width: 300px;
+    margin: 0.5em;
+}
+.Car .bodyType {
+    font-size: 1.1em;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: gray;
+}
+.Car .modelName {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: black;
+}
+.Car .modelType {
+    font-size: 1.2em;
+    font-weight: 500;
+    color: gray;
+}
+.Car .imageUrl {
+    width: inherit;
+    padding: 1em 0;
+}
+.Car .carLinks {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+.Car .carLinks li {
+    margin: 0 2em;
+    font-weight: 600;
+}
+.Car .carLinks li a {
+    text-decoration: none;
+}
+.Car .carLinks li a:hover {
+    text-decoration: underline;
+}
+.Car .carLinks li img{
+    height: 15px;
+    position: relative;
+    top: 0.1em;
+    left: 0.5em;
+}
