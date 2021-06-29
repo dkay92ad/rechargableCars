@@ -4,6 +4,7 @@
 .Cars {
     display: flex;
     padding: 1em;
+    overflow-y: scroll;
 }
 
 .Cars .carousel-dots {
@@ -45,4 +46,17 @@
     display: inline-block;
     padding: 1em;
     text-decoration: none;
+}
+.Cars .navigationIcons{
+    display: flex;
+    list-style: none;
+    position: absolute;
+    bottom: 45%;
+    right: 2%;
+}
+.Cars .navigationIcons li:nth-child(1) img{
+    transform: rotate(180deg);
+}
+.Cars .navigationIcons li img{
+    width: 50px;
 }

@@ -15,7 +15,8 @@ class Cars extends Component {
     super(props);
     this.state = {
       carsList: [],
-      activeIndex: 0
+      activeIndex: 0,
+      navigatedIndex: 4
     }
   }
   componentDidMount() {
@@ -31,15 +32,32 @@ class Cars extends Component {
   }
   scrollLeftBy(index, event) {
     event.preventDefault()
-    
-    let scrollWidth = (window.outerWidth / this.state.carsList.length) * index;
-    scrollWidth = index != 0? scrollWidth + 130 : 0;
-    this.setState({ activeIndex: index }, ()=>{
-      window.scrollTo(scrollWidth, 0)
+    let carsListElement = document.querySelector(".Cars");
+    let scrollWidth = (260 * index) + (index ? 35 * index : 0);
+    this.setState({ activeIndex: index }, () => {
+      carsListElement.scrollTo(scrollWidth, 0)
+    });
+  }
+  navigate(direction){
+    let carsListElement = document.querySelector(".Cars");
+    let navigatedIndex = this.state.navigatedIndex;
+    let carsList = this.state.carsList;
+    let scrollWidth = 0;
+    let multiplyBy = 0
+    if(direction === "left"){
+      navigatedIndex = navigatedIndex - 4 > 0 ? navigatedIndex - 4 : 0
+    }else{
+      navigatedIndex = navigatedIndex + 4 < carsList.length ?  navigatedIndex + 4 :  carsList.length - 1
+    }
+    // multiplyBy = Math.floor(navigatedIndex/4);
+    scrollWidth = (260 * navigatedIndex) + (navigatedIndex ? 35 * navigatedIndex : 0);
+    this.setState({ navigatedIndex: navigatedIndex }, () => {
+      carsListElement.scrollTo(scrollWidth, 0)
     });
   }
   render() {
     const { carsList, activeIndex } = this.state;
+    let deviceWidth = window.outerWidth;
     return (
       <div className="Cars">
         {
@@ -47,15 +65,21 @@ class Cars extends Component {
             <Car key={car.id} car={car} id={"#" + car.id} />
           )
         }
-        <ul className="carousel-dots">
-          {
-            carsList.map((car, index) =>
-              <li key={car.id} className={activeIndex === index ? "activeIndex" : ""}>
-                <a href={car.id} onClick={this.scrollLeftBy.bind(this, index)}></a>
-              </li>
-            )
+        {deviceWidth <= 420 ?
+          <ul className="carousel-dots">
+            {
+              carsList.map((car, index) =>
+                <li key={car.id} className={activeIndex === index ? "activeIndex" : ""}>
+                  <a href={car.id} onClick={this.scrollLeftBy.bind(this, index)}></a>
+                </li>
+              )
+            }
+          </ul> : 
+          <ul className="navigationIcons">
+            <li onClick={()=>this.navigate("left")}><img src="icons/chevron-circled.svg" /></li>
+            <li onClick={()=>this.navigate("right")}><img src="icons/chevron-circled.svg" /></li>
+          </ul>
           }
-        </ul>
 
       </div>
     );
