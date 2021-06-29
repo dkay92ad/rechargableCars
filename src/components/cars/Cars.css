@@ -51,7 +51,7 @@
     display: flex;
     list-style: none;
     position: absolute;
-    bottom: 45%;
+    bottom: 15%;
     right: 2%;
 }
 .Cars .navigationIcons li:nth-child(1) img{
